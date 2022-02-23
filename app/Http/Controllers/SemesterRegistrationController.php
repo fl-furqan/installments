@@ -17,13 +17,13 @@ class SemesterRegistrationController extends Controller
     public function index()
     {
         if(request()->query('cko-session-id')){
-            $client = new Client(['base_uri' => 'https://api.sandbox.checkout.com']);
+            $client = new Client(['base_uri' => 'https://api.checkout.com']);
 
             try {
                 $response = $client->request('GET', '/payments/' . request()->query('cko-session-id'),
                     [
                         'headers' => [
-                            'Authorization' => "sk_test_7c21900d-0f6b-4395-af84-9508b39fd5c7"
+                            'Authorization' => "sk_f9b4d5dd-d1d0-4943-bdbf-e5cd88f37403"
                         ]
                     ]);
 

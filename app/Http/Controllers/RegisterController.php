@@ -102,7 +102,7 @@ class RegisterController extends Controller
         }
 
         Session::put('student_id', $student->id);
-        $course = Course::query()->where('code', 'regular')->first();
+        $course = Course::query()->where('code', 'installments-3')->first();
         $amount = $course->amount;
 
         if (isset($request->hidden_apply_coupon) && !empty($request->hidden_apply_coupon)){

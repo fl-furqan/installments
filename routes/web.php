@@ -29,7 +29,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'l
     Route::get('/apply-coupon', [CouponController::class, 'applyCoupon'])->name('apply.coupon');
 });
 
-
-Route::get('/test', function (\App\Services\GoogleSheet $googleSheet){
-
+Route::get('/clear-cache', function() {
+    Artisan::call('optimize:clear');
+    echo "Cleared";
 });

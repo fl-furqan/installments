@@ -207,6 +207,14 @@
             content: "\f00c"
         }
 
+        #table-installment .green {
+            color: green !important;
+            font-weight: bold;
+        }
+        #table-installment th {
+            color: red !important;
+            font-weight: bold;
+        }
         #progressbar li:before {
             width: 50px;
             height: 50px;
@@ -258,6 +266,18 @@
             width: 100%;
             object-fit: cover
         }
+        #top-nav-links .nav-item {
+            margin: 5px;
+        }
+        #top-nav-links .nav-item a {
+            background: transparent !important;
+            border-color: transparent !important;
+            color: #f68b32 !important;
+            font-size: 13px;
+            font-weight: bold;
+            font-family: Cairo;
+        }
+
     </style>
 
     <style>*,*::after,*::before{box-sizing:border-box}html{padding:1rem;background-color:#FFF;font-family: 'Cairo', sans-serif;, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif}#payment-form{width:31.5rem;margin:0 auto}iframe{width:100%}.one-liner{display:flex;flex-direction:column}#pay-button{border:none;border-radius:3px;color:#FFF;font-weight:500;height:40px;width:100%;background-color:#13395E;box-shadow:0 1px 3px 0 rgba(19,57,94,0.4)}#pay-button:active{background-color:#0B2A49;box-shadow:0 1px 3px 0 rgba(19,57,94,0.4)}#pay-button:hover{background-color:#15406B;box-shadow:0 2px 5px 0 rgba(19,57,94,0.4)}#pay-button:disabled{background-color:#697887;box-shadow:none}#pay-button:not(:disabled){cursor:pointer}.card-frame{border:solid 1px #13395E;border-radius:3px;width:100%;margin-bottom:8px;height:40px;box-shadow:0 1px 3px 0 rgba(19,57,94,0.2)}.card-frame.frame--rendered{opacity:1}.card-frame.frame--rendered.frame--focus{border:solid 1px #13395E;box-shadow:0 2px 5px 0 rgba(19,57,94,0.15)}.card-frame.frame--rendered.frame--invalid{border:solid 1px #D96830;box-shadow:0 2px 5px 0 rgba(217,104,48,0.15)}.success-payment-message{color:#13395E;line-height:1.4}.token{color:#b35e14;font-size:0.9rem;font-family: 'Cairo', sans-serif;}@media screen and (min-width: 31rem){.one-liner{flex-direction:row}.card-frame{width:318px;margin-bottom:0}#pay-button{width:175px;margin-left:8px}}</style>
@@ -266,6 +286,78 @@
 <body>
 
 <div class="container-fluid">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-center">
+        <ul class="navbar-nav" id="top-nav-links">
+            <li class="nav-item">
+                <a class="btn btn-primary" data-toggle="modal" data-target="#Terms-And-Conditions" href="#">{{ __('Terms And Conditions') }}</a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-primary" data-toggle="modal" data-target="#Refund-Policy" href="#">{{ __('Refund Policy') }}</a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-primary" data-toggle="modal" data-target="#Privacy-Policy" href="#">{{ __('Privacy Policy') }}</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Modal -->
+    <div class="modal fade" id="Terms-And-Conditions" tabindex="-1" role="dialog" aria-labelledby="Terms-And-Conditions" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">{{ __('Terms And Conditions') }}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    {!! __('Terms And Conditions Text') !!}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('Close') }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="Refund-Policy" tabindex="-1" role="dialog" aria-labelledby="Refund-Policy" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">{{ __('Refund Policy') }}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    {!! __('Refund Policy Text') !!}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('Close') }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="Privacy-Policy" tabindex="-1" role="dialog" aria-labelledby="Privacy-Policy" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">{{ __('Privacy Policy') }}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    {!! __('Privacy Policy Text') !!}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('Close') }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
@@ -289,20 +381,22 @@
         </div>
     </nav>
 
+    <div class="alert alert-danger d-none" id="support-cookies" style="text-align: center;font-weight: bold;">{!! __('Support Cookies') !!}</div>
+
     <div class="row justify-content-center">
         <div class="col-11 col-sm-9 col-md-7 col-lg-6 col-xl-5 text-center p-0 mt-3 mb-2">
             <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
                 <h2 id="heading">{{ __('resubscribe.Second semester 2022') }}</h2>
 
-                @if(session('success'))
+                @if(\Illuminate\Support\Facades\Session::has('success'))
                     <div class="alert alert-success" role="alert">
-                        {{ session('success') }}
+                        {{ \Illuminate\Support\Facades\Session::get('success') }}
                     </div>
                 @endif
 
-                @if(session('error'))
+                @if(\Illuminate\Support\Facades\Session::has('error'))
                     <div class="alert alert-danger" role="alert">
-                        {{ session('error') }}
+                        {{ \Illuminate\Support\Facades\Session::get('error') }}
                     </div>
                 @endif
 
@@ -330,15 +424,50 @@
 
                             @if(app()->getLocale() == 'ar')
                                 <p class="text-right">
-                                    أعزاءنا أولياء الأمور.. نفيدكم بأنه تم فتح مجال التسجيل للفصل
-                                    الثاني 2022 للطلاب المنتظمين بنظام التعليم عن بعد وستكون بداية الفصل الدراسي الثاني للطلاب والطالبات من تاريخ 02-01-2022 الموافق 29-05-1443هـ إلى تاريخ 28-04-2022 الموافق 27-09-1443 هـ.
+                                    أعزاءنا أولياء الأمور.. نفيدكم بأنه حان موعد استحقاق الدفعة الثالثة من الرسوم الدراسية للفصل الدراسي الثاني 2022
+                                    وقدرها 95$.. نرجو إنهاء إجراءات السداد من خلال الخيارات أدناه.. مع تمنياتنا للجميع بالتوفيق والنجاح.
+                                </p>
+
+                                <div class="w-100">
+                                    <table class="table table-bordered text-center" id="table-installment">
+                                        <tr>
+                                            <th>م</th>
+                                            <th>النسبة</th>
+                                            <th>القيمة</th>
+                                            <th>تاريخ الاستحقاق</th>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-weight: bold; color: black">الدفعة الأولى</td>
+                                            <td>40%</td>
+                                            <td>125$</td>
+                                            <td>عند التسجيل</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-weight: bold; color: black">الدفعة الثانية</td>
+                                            <td>30%</td>
+                                            <td>95$</td>
+                                            <td>01-02-2022</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-weight: bold; color: black" class="green">الدفعة الثالثة</td>
+                                            <td class="green">30%</td>
+                                            <td class="green">95$</td>
+                                            <td class="green">01-03-2022</td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <span class="text-center d-block" style="color: #ea3223; font-weight: bold;">ملاحظة: الرسوم أعلاه شاملة الرسوم البنكية</span>
+
+                                <p class="text-right">
+
                                     <br>
                                     <br>
-                                    <span class="d-block" style="color: #ea3223; font-weight: bold;">ملاحظة:</span>
+                                    <span class="d-block" style="color: #ea3223; font-weight: bold;"></span>
                                     <span style="color: #ea3223; font-weight: bold;">
-                                                للتسجيل في نظام التعليم الفردي (عن بعد) يمكنكم التسجيل في قائمة الانتظار
+
                                         </span>
-                                    <a href="https://furqanshop.com/eservices_checkout_one_to_one/">بالضغط هنا</a>.
+
                                     <br>
                                     <br>
                                     في حال وجود استفسارات حول آليات سداد الرسوم وخيارات الدفع المتاحة نفيدكم أنه قد تم تخصيص أحد ممثلي قسم الحسابات للرد على استفساراتكم حيال الأمر وتقديم الدعم الكامل عبر المكتب الافتراضي لحل أي عوائق إن شاء الله..
@@ -355,23 +484,55 @@
 
                                 <ul class="text-right">
                                     <li>9:00 صباحا - 10:00 مساء بتوقيت مكة المكرمة (GMT+3)</li>
-                                    <li>8:00 صباحا - 09:00 مساء بتوقيت المغرب العربي وفرنسا  (GMT+1)</li>
-                                    <li>2:00 صباحا - 03:00 مساء بتوقيت نيويورك ( GMT-5)</li>
+                                    <li>6:00 صباحا - 07:00 مساء بتوقيت المغرب العربي وفرنسا (GMT+1)</li>
+                                    <li>1:00 صباحا - 02:00 مساء بتوقيت نيويورك ( GMT-5)</li>
                                 </ul>
 
                                 <span class="text-center d-block">مع تمنياتنا للجميع بالتوفيق والنجاح.</span>
 
                                 </p>
                             @else
-                                <p>
-                                    <span class="d-block">Dear Parents,</span>
-                                    <span class="d-block">
-                                            We’d like to announce the beginning of registration for the second semester 2022, which is available for distance-learning. The second semester is to begin from 02.01.2022 until 28.04.2022.
-                                        </span>
 
-                                    <span class="d-block" style="color: #bb271a; font-weight: bold;">Note:</span>
+                                <p>
+                                    Dear Guardian, kindly be informed that the 3rd installment of the Second semester 2022 which costs 95$ is due now.
+                                    Accordingly, seeking your assistance to settle the payment using the choices below.
+                                </p>
+
+                                <div class="w-100">
+                                    <table class="table table-bordered text-center" id="table-installment">
+                                        <tr>
+                                            <th></th>
+                                            <th>%</th>
+                                            <th>Amount</th>
+                                            <th>Due Date</th>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-weight: bold; color: black">First Payment</td>
+                                            <td>40%</td>
+                                            <td>125$</td>
+                                            <td>When registering</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-weight: bold; color: black">Second Payment</td>
+                                            <td>30%</td>
+                                            <td>95$</td>
+                                            <td>01-02-2022</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-weight: bold; color: black" class="green">Third Payment</td>
+                                            <td class="green">30%</td>
+                                            <td class="green">95$</td>
+                                            <td class="green">01-03-2022</td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <span class="text-center d-block" style="color: #ea3223; font-weight: bold;">Note: The above fees are inclusive of bank fees.</span>
+
+                                <p>
+                                    <span class="d-block" style="color: #bb271a; font-weight: bold;"></span>
                                     <span class="d-block" style="color: #bb271a; font-weight: bold;">
-                                            To register in the one-to-one classes, you can register in the waiting list. <a href="https://furqanshop.com/eservices_checkout_one_to_one/">click here</a>
+
                                         </span>
 
                                     <br>
@@ -402,8 +563,8 @@
 
                                 <ul>
                                     <li>09:00AM - 10:00PM Mecca time (GMT + 3)</li>
-                                    <li>08:00AM - 09:00PM Morocco and France time (GMT+1)</li>
-                                    <li>02:00AM - 03:00PM New York time (GMT-5)</li>
+                                    <li>06:00AM - 07:00PM Morocco and France time (GMT+1)</li>
+                                    <li>01:00 AM - 02:00 PM New York (GMT - 5)</li>
                                 </ul>
 
                                 <span class="w-100 text-center d-block" style="color: black; font-weight: bold;">
@@ -652,7 +813,7 @@
 
 <!-- add frames script -->
 <script src="https://cdn.checkout.com/js/framesv2.min.js"></script>
-<script src="{{ asset('app.js') }}?v=6.22"></script>
+<script src="{{ asset('app.js') }}?v=90.55"></script>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -793,7 +954,7 @@
                 $("#submit-main-form").removeClass('d-none');
             }else{
                 e.preventDefault();
-                alert('يجب عليك الموافقة على صحة البيانات السابقة')
+                alert('{{ __('You must agree that the previous information is correct') }}');
             }
         });
 
@@ -808,7 +969,7 @@
                 $("#submit-main-form").addClass('d-none');
             }else{
                 e.preventDefault();
-                alert('يجب عليك الموافقة على صحة البيانات السابقة')
+                alert('{{ __('You must agree that the previous information is correct') }}');
             }
 
         });
@@ -851,6 +1012,12 @@
                 $(this).css('border-color', 'green');
             }
         });
+
+        if (navigator.cookieEnabled == false) {
+            $('#support-cookies').removeClass('d-none');
+        }else{
+            $('#support-cookies').addClass('d-none');
+        }
 
     });
 </script>

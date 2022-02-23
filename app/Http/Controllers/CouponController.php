@@ -15,7 +15,7 @@ class CouponController extends Controller
         $code = \request()->query('code');
         $student_number = \request()->query('std_number');
         $student = Student::query()->where('serial_number', $student_number)->first();
-        if (!$student){
+        if(!$student){
             return response()->json(['msg' => __('resubscribe.Please enter your student number')], 404, [], JSON_UNESCAPED_UNICODE);
         }
 
@@ -23,7 +23,7 @@ class CouponController extends Controller
         $course = Course::query()->where('code', 'regular')->first();
         $coupon = Coupon::where('code', $code)->where('course_id', $course->id)->first();
 
-        if (@$coupon->is_valid){
+        if(@$coupon->is_valid){
             $discount    = $coupon->getDiscount($course->amount)/100;
             $base_amount = $course->amount/100;
             return response()->json(['discount' => $discount, 'base_amount' => $base_amount, 'price_after_discount' => ($base_amount - $discount)], 200, [], JSON_UNESCAPED_UNICODE);
